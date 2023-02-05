@@ -1,0 +1,5 @@
+name: YeGuangTicketBot
+version: 0.1.0
+authors: ["CNLuminous"]
+api-version: 0.48.1
+main: com.cnluminous.kookticketbot.Main
