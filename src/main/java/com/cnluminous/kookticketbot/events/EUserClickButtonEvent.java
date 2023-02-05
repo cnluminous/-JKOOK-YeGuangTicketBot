@@ -24,6 +24,9 @@ public class EUserClickButtonEvent implements Listener {
             Guild guild = event.getChannel().getGuild();
             TextChannel textChannel = guild.createTextChannel("工单"+ticketId,Main.getInstance().getCore().getHttpAPI().getCategory(groupId));
             textChannel.updatePermission(event.getUser(), Permission.SEE_CHANNELS.getValue(),1);
+            for (Integer rol:adminRolS){
+                textChannel.updatePermission(rol, Permission.SEE_CHANNELS.getValue(),1);
+            }
             textChannel.sendComponent(new TicketCreateSuccessMessage(event.getUser(),ticketId,server).getCard());
             NotifyMessage card = new NotifyMessage("工单已发起#"+ticketId,"(met)"+event.getUser().getId()+"(met)发起了「"+server+"」工单,请前往子频道「(chn)"+textChannel.getId()+"(chn)」中进行处理");
             Main.getInstance().getLogger().info(event.getUser().getName()+"发起了工单,编号="+ticketId+"频道ID="+textChannel.getId());
